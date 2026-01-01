@@ -1,0 +1,38 @@
+<svg 
+  width="300" 
+  height="300" 
+  viewBox="0 0 300 300" 
+  fill="none" 
+  xmlns="http://www.w3.org/2000/svg"
+  style="overflow: visible"
+>
+  <path 
+    d="M100,160 C110,150 130,150 140,160 C150,170 160,170 170,160 L190,180 C180,200 160,210 130,200 C110,190 90,180 100,160 Z" 
+    fill="#E2E8F0" 
+    opacity="0.8" 
+    transform="translate(-10, 10)"
+  />
+
+  <path 
+    d="M135,80 L165,80 L170,140 L185,130 C195,125 205,140 200,150 L210,165 C220,165 230,175 225,185 C220,195 210,195 200,185 L190,210 C185,220 175,230 150,230 L100,230 C75,230 65,220 60,210 L90,140 L95,80 Z M130,75 L170,75" 
+    stroke="#C5A059" 
+    stroke-width="8" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  />
+  
+  <rect 
+    x="128" 
+    y="72" 
+    width="44" 
+    height="10" 
+    rx="2" 
+    fill="#C5A059"
+  />
+
+  <path d="M135,145 L140,150 L135,155 L130,150 Z" fill="#C5A059"/>
+  <path d="M155,145 L160,150 L155,155 L150,150 Z" fill="#C5A059"/>
+
+  <circle cx="205" cy="125" r="12" fill="#C5A059"/>
+  <circle cx="220" cy="175" r="12" fill="#C5A059"/>
+</svg>
