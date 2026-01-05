@@ -59,7 +59,7 @@ html {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother easing */
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .reveal.active {
@@ -73,7 +73,7 @@ html {
 
 /* --- Buttons --- */
 .btn-primary {
-  background: var(--gold-gradient); /* Gradient looks more premium */
+  background: var(--gold-gradient);
   color: var(--contrast-text);
   padding: 16px 32px;
   border-radius: 6px;
@@ -114,15 +114,48 @@ html {
   background-color: var(--gold-glass);
 }
 
-/* --- Navigation --- */
-.navbar {
+/* =========================================
+   HEADER & NAVIGATION (UPDATED)
+   ========================================= */
+
+/* Wrapper for Nav + Contact Bar */
+.fixed-header-group {
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  backdrop-filter: blur(16px); /* Stronger blur for glass effect */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
+}
+
+/* Top Contact Bar */
+.contact-bar {
+  background-color: var(--gold);
+  color: var(--white);
+  padding: 8px 0;
+  text-align: center;
+  font-size: 13px;
+  position: relative;
+  z-index: 1001;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .7; }
+}
+
+/* Navbar */
+.navbar {
+  position: relative; /* Inside fixed-header-group */
+  width: 100%;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .nav-content {
@@ -139,27 +172,38 @@ html {
   letter-spacing: -0.5px;
 }
 
+.brand-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Navigation Links (Buttons) */
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
 }
 
-.nav-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 500;
+.nav-link-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-main);
   font-size: 14px;
-  transition: color 0.2s;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
   position: relative;
+  transition: color 0.2s;
+  padding: 0;
 }
 
-.nav-link:hover {
+.nav-link-btn:hover {
   color: var(--text-main);
 }
 
-/* Subtle underline animation for links */
-.nav-link::after {
+/* Underline Animation for Buttons */
+.nav-link-btn::after {
   content: '';
   position: absolute;
   width: 0;
@@ -170,7 +214,7 @@ html {
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after {
+.nav-link-btn:hover::after {
   width: 100%;
 }
 
@@ -185,13 +229,13 @@ html {
 /* --- Hero Section --- */
 .hero {
   background-color: var(--white);
-  /* Technical Grid Pattern Background */
   background-image: 
     radial-gradient(circle at 10% 20%, rgba(197, 160, 89, 0.05) 0%, transparent 20%),
     linear-gradient(#f1f5f9 1px, transparent 1px),
     linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
   background-size: 100% 100%, 40px 40px, 40px 40px;
-  padding: 180px 24px 120px 24px;
+  /* Increased top padding for Fixed Header + Contact Bar */
+  padding: 220px 24px 120px 24px; 
   position: relative;
   overflow: hidden;
 }
@@ -309,7 +353,6 @@ html {
 /* --- Solutions Section --- */
 .bg-slate {
   background-color: var(--slate);
-  /* Subtle pattern for secondary sections */
   background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
   background-size: 30px 30px;
 }
@@ -338,7 +381,7 @@ html {
 
 .solution-card {
   background-color: var(--white);
-  border: 1px solid transparent; /* Prepared for hover border */
+  border: 1px solid transparent;
   padding: 40px;
   border-radius: 16px;
   transition: all 0.4s ease;
@@ -407,6 +450,76 @@ html {
   color: var(--gold-dark);
 }
 
+/* =========================================
+   PRODUCTS SECTION (NEW)
+   ========================================= */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background-color: var(--white);
+  border: 1px solid var(--slate-light);
+  padding: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.product-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-icon-wrapper {
+  color: var(--gold);
+  background-color: var(--slate);
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-title {
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =========================================
+   CATALOGUE SECTION (NEW)
+   ========================================= */
+.catalogue-box {
+  background-color: var(--white);
+  border: 2px dashed var(--gold); /* Dashed border for document feel */
+  border-radius: 16px;
+  padding: 60px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: var(--shadow-soft);
+}
+
+.catalogue-icon {
+  background-color: var(--slate);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+}
+
 /* --- Workflow Section --- */
 .workflow-wrapper {
   max-width: 900px;
@@ -423,13 +536,11 @@ html {
   background: linear-gradient(to bottom, var(--gold), var(--slate-light));
   z-index: 0;
 }
-/* --- Workflow Section Animation Fix --- */
 
-/* 1. Default state: Invisible and moved down */
+/* Workflow Animation & States */
 .workflow-step {
   opacity: 0;
   transform: translateY(30px);
-  /* Faster transition (0.2s) for interaction */
   transition: transform 0.2s ease, opacity 0.5s ease;
   display: flex;
   gap: 40px;
@@ -438,18 +549,16 @@ html {
   cursor: pointer;
 }
 
-/* 2. Visible state: Triggered by React 'workflowSeen' state */
 .workflow-step.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 3. Focused/Hover State: Moves slightly right */
 .workflow-step.focused {
-  transform: translateX(10px) !important; /* Override vertical transform */
+  transform: translateX(10px) !important;
 }
 
-/* --- Content Styling --- */
+/* Content Styling */
 .step-node {
   flex-shrink: 0;
   width: 50px;
@@ -464,7 +573,7 @@ html {
   font-weight: 800;
   font-size: 20px;
   box-shadow: 0 0 0 8px var(--white);
-  transition: all 0.2s; /* Faster */
+  transition: all 0.2s;
 }
 
 .step-card {
@@ -474,7 +583,7 @@ html {
   padding: 32px;
   border-radius: 12px;
   position: relative;
-  transition: all 0.2s ease; /* Faster */
+  transition: all 0.2s ease;
   box-shadow: var(--shadow-soft);
 }
 
@@ -485,10 +594,10 @@ html {
   width: 40px;
   height: 2px;
   background-color: var(--slate-light);
-  transition: background-color 0.2s; /* Faster */
+  transition: background-color 0.2s;
 }
 
-/* --- Focused State Colors --- */
+/* Focused State Colors */
 .workflow-step.focused .step-node {
   background-color: var(--gold);
   color: var(--white);
@@ -496,7 +605,7 @@ html {
 }
 
 .workflow-step.focused .step-card {
-  background-color: #1e293b; /* Dark Navy */
+  background-color: #1e293b;
   border-color: var(--gold);
   box-shadow: var(--shadow-hover);
 }
@@ -505,7 +614,6 @@ html {
   background-color: var(--gold);
 }
 
-/* Text color changes on focus */
 .step-title {
   font-size: 20px;
   font-weight: 800;
@@ -605,23 +713,23 @@ html {
   color: var(--text-muted);
   font-size: 14px;
 }
+
 /* --- Social Media Links (Premium Vertical List) --- */
 .social-group {
   display: flex;
-  flex-direction: column; /* Vertical stack */
-  gap: 16px;              /* Consistent spacing with text lists */
+  flex-direction: column;
+  gap: 16px;
 }
 
 .social-link {
   display: flex;
   align-items: center;
-  gap: 12px;              /* Space between icon and text */
+  gap: 12px;
   text-decoration: none;
   color: var(--text-muted);
   font-weight: 600;
   font-size: 14px;
   transition: all 0.3s ease;
-  group: social;          /* Identifier for hover logic */
 }
 
 .social-icon-box {
@@ -638,17 +746,17 @@ html {
   box-shadow: var(--shadow-soft);
 }
 
-/* --- Hover Effects --- */
+/* Hover Effects */
 .social-link:hover .social-icon-box {
   background-color: var(--gold);
   border-color: var(--gold);
   color: var(--white);
-  transform: translateX(4px); /* Subtle slide right */
+  transform: translateX(4px);
   box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
 }
 
 .social-link:hover {
-  color: var(--text-main); /* Text gets darker */
+  color: var(--text-main);
 }
 
 .footer-bottom {
@@ -659,7 +767,6 @@ html {
   flex-wrap: wrap;
   gap: 20px;
 }
-
 
 /* --- Placeholder Component --- */
 .img-placeholder {
@@ -721,6 +828,14 @@ html {
     opacity: 1;
   }
 
+  /* Adjust nav buttons for mobile list */
+  .nav-link-btn {
+    text-align: left;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+  }
+
   .section-padding { padding: 80px 20px; }
   
   .about-grid { grid-template-columns: 1fr; }
@@ -750,7 +865,7 @@ html {
 }
 
 @media (max-width: 480px) {
-  .hero { padding-top: 140px; }
+  .hero { padding-top: 220px; }
   .hero-title { font-size: 36px; }
   .solution-card { padding: 24px; }
   .card-bg-number { font-size: 80px; }
