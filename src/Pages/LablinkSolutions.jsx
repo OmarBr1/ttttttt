@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Lablink from "../assets/LablinkSol.jpg"
+import Lablink from "../assets/lablinkSol.jpg"
 import { 
   Beaker, Settings, Microscope, ChevronRight, Mail, Phone, 
   ArrowUpRight, Shield, Globe, CheckCircle2, ArrowDown, Menu, X, Image as ImageIcon,
