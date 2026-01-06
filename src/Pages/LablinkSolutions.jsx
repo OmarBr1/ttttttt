@@ -106,7 +106,7 @@ const LablinkSolutions = () => {
             </div>
 
             <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
-              {['About', 'Solutions', 'Products', 'Catalogue', 'Workflow', ].map(item => (
+              {['Home','About', 'Products', 'Catalogue', 'Workflow', ].map(item => (
                 <button 
                   key={item} 
                   onClick={() => scrollToSection(item.toLowerCase())}
